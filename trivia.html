@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<title>CSS Trivia</title>
+		<style>
+		#test { counter-reset: correct; }
+		#test input.correct:checked { counter-increment: correct; }
+		#test #results #result::before { content: counter(correct); }
+
+		#results, .options { display: none; }
+		input[type=radio] {
+			height:0;
+			width:0;
+			overflow: ;
+			visibility: hidden;
+		}
+
+		#question::before { content: "Can a trivia game be developed using HTML and CSS without JS?"; }
+		[name=answer-0]:checked ~ #questions #question::before { content: "Inconceivable? Was that a Princess Bride reference?"; }
+		[name=answer-1]:checked ~ #questions #question::before { content: "So how many lines of JS code has this page?"; }
+		[name=answer-2]:checked ~ #questions #question::before { content: "Question 4"; }
+		[name=answer-3]:checked ~ #questions #question::before { content: "Question 5"; }
+
+		[name=answer-0]:not(:checked) ~ #questions #q-0-options,
+		[name=answer-0]:checked ~ #questions #q-1-options,
+		[name=answer-1]:checked ~ #questions #q-2-options,
+		[name=answer-2]:checked ~ #questions #q-3-options,
+		[name=answer-3]:checked ~ #questions #q-4-options,
+		[name=answer-4]:checked ~ #results { display: block; }
+
+		[name=answer-0]:checked ~ #questions #q-0-options,
+		[name=answer-1]:checked ~ #questions #q-1-options,
+		[name=answer-2]:checked ~ #questions #q-2-options,
+		[name=answer-3]:checked ~ #questions #q-3-options,
+		[name=answer-4]:checked ~ #questions #q-4-options,
+		[name=answer-4]:checked ~ #questions #question { display: none; }
+		</style>
+	</head>
+	<body>
+		<div id="test">
+
+			<input type="radio" name="answer-0" class="correct" id="answer-0-correct" /><input type="radio" name="answer-0" id="answer-0-incorrect" />
+			<input type="radio" name="answer-1" class="correct" id="answer-1-correct" /><input type="radio" name="answer-1" id="answer-1-incorrect" />
+			<input type="radio" name="answer-2" class="correct" id="answer-2-correct" /><input type="radio" name="answer-2" id="answer-2-incorrect" />
+			<input type="radio" name="answer-3" class="correct" id="answer-3-correct" /><input type="radio" name="answer-3" id="answer-3-incorrect" />
+			<input type="radio" name="answer-4" class="correct" id="answer-4-correct" /><input type="radio" name="answer-4" id="answer-4-incorrect" />
+
+			<div id="questions">
+
+				<div id="question"></div>
+				
+				<div class="options" id="q-0-options">
+					<label for="answer-0-correct">Yes</label>
+					<label for="answer-0-incorrect">No</label>
+					<label for="answer-0-incorrect">Maybe</label>
+					<label for="answer-0-incorrect">Inconceivable</label>
+				</div>
+
+				<div class="options" id="q-1-options">
+					<label for="answer-1-incorrect">You keep using that word. I do not think it means what you think it means</label>
+					<label for="answer-1-correct">Yes</label>
+					<label for="answer-1-incorrect">No</label>
+					<label for="answer-1-incorrect">Maybe</label>
+				</div>
+
+				<div class="options" id="q-2-options">
+					<label for="answer-2-correct">0</label>
+					<label for="answer-2-incorrect">About 3.50</label>
+					<label for="answer-2-incorrect">42</label>
+					<label for="answer-2-incorrect">734</label>
+				</div>
+
+				<div class="options" id="q-3-options">
+					<label for="answer-3-correct">Yes</label>
+					<label for="answer-3-incorrect">No</label>
+					<label for="answer-3-incorrect">Maybe</label>
+					<label for="answer-3-incorrect">Inconceivable</label>
+				</div>
+
+				<div class="options" id="q-4-options">
+					<label for="answer-4-correct">Yes</label>
+					<label for="answer-4-incorrect">No</label>
+					<label for="answer-4-incorrect">Maybe</label>
+					<label for="answer-4-incorrect">Inconceivable</label>
+				</div>
+
+			</div>
+			<div id="results">
+				<span id="result"></span> correct answers
+			</div>
+		</div>
+	</body>
+</html>
